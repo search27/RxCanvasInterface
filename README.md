@@ -3,6 +3,9 @@ RxCanvasInterface
 
 * Create UI/UX Element Into Canvas
 
+* Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
+* Testing is available until the end of the year.
+
 ## Version
 * Test Version - UnStable
 
