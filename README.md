@@ -8,6 +8,10 @@ RxCanvasInterface
 ## Version
 * Test Version - UnStable
 
+## Step Folder
+* Step1.html - Create Button
+* Step2.html - Create SelectBox
+* Step3.html - Create Slider
 
 ## Sample Code
 
@@ -59,19 +63,19 @@ console.log(RxCanvasInterface);             // Check Functions
 ```
 ### Common Elements Functions
 ```javascript
-    function GetSelf(){}                    // Get Self
-    function SetProperties(){}              // Set Properties Base on Default Properties
-    function IsCollision(){}                // Check Collision
-    function SetClickAction(){}
-    function SetClickCallback(){}
-    function SetPivot(){}                   // Not Support Yet
-    function CreatePivots(){}
-    function CreateEdge(){}
-    function DrawPolygon(){}
-    function DrawStroke(){}
-    function DrawText(){}
-    function BaseUpdate(){}
-    function BaseDraw(){}
+function GetSelf(){}                    // Get Self
+function SetProperties(){}              // Set Properties Base on Default Properties
+function IsCollision(){}                // Check Collision
+function SetClickAction(){}
+function SetClickCallback(){}
+function SetPivot(){}                   // Not Support Yet
+function CreatePivots(){}
+function CreateEdge(){}
+function DrawPolygon(){}
+function DrawStroke(){}
+function DrawText(){}
+function BaseUpdate(){}
+function BaseDraw(){}
 ```
 
 ## Grid
