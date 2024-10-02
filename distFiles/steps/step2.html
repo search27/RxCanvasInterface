@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <script src="../RxFramework.js"></script>
+
+        <script>
+
+            const selectBoxStyle = {
+                text : 'Button Sample',
+                lineWidth : 2,
+                textAlign : 'center',
+                textBaseline : 'middle',
+                fontSize : 33,
+                borderRadius : 10
+            };
+
+            const selectOptions = [
+                { name : 'High', value : 2 },
+                { name : 'Medium', value : 3 },
+                { name : 'Low', value : 4 },
+            ];
+            const optionsStyle = {
+                textAlign : 'center',
+                textBaseline : 'middle',
+                fontSize : 30,
+                color : 'red',
+            };
+
+            const init = () => {
+
+                // target, Create Canvas Count : default 1
+                const interface = new RxCanvasInterface.Interface(document.body, 2);
+                const canvas = interface.GetCanvas();
+                
+                interface.SetGrid([10, 10]);
+                interface.SetGridVisualize(true);
+                interface.SetCollisionVisualize(true);           // default : false
+
+                const width = 500;
+                const height = 100;
+                const center = [ window.innerWidth / 2 - (width / 2), window.innerHeight / 2 - (height / 2)];
+                const selectBox = new RxCanvasInterface.SelectBox(center[0], center[1], width, height);
+                selectBox.SetProperties(selectBoxStyle);
+                selectBox.SetOptions(selectOptions, optionsStyle);
+                selectBox.SetChangeCallback((option) => {
+                    console.log(option);
+                })
+
+                const selectSelf = selectBox.GetSelf();
+                interface.AddComponent(selectSelf);
+                interface.AddCollision(selectSelf);
+            }
+
+            window.onload = function(){
+                // RxFramework Load Time
+                setTimeout(init, 100);
+            }
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script src="../RxFramework.js"></script>
+
+        <script>
+
+            const width = 500;
+            const height = 100;
+            const selectBoxStyle = {
+                text : 'Button Sample',
+                lineWidth : 2,
+                textAlign : 'center',
+                textBaseline : 'middle',
+                fontSize : 33,
+                borderRadius : 10
+            };
+
+            const sliderPropertiesWrapper = {
+                width : width,
+                height : height / 2,
+                fontSize : 33,
+                color : 'black',
+                lineWidth : .5,
+                strokeStyle : '#333',
+                textAlign : 'center',
+                textBaseline : 'middle',
+                padding : 20,
+            };
+            const sliderProperties = {
+                emptyColor : '#ccc',
+                fillColor : '#00afd7',
+                pointColor : '#b93640',
+                pointRadius : 10,                       // Min Radius : this.Properties.height / 2
+                min : 0,
+                max : 100,
+                value : 50,
+            };
+
+            const init = () => {
+
+                // target, Create Canvas Count : default 1
+                const interface = new RxCanvasInterface.Interface(document.body, 2);
+                const canvas = interface.GetCanvas();
+                
+                interface.SetGrid([10, 10]);
+                interface.SetGridVisualize(true);
+                interface.SetCollisionVisualize(true);           // default : false
+
+
+                const center = [ window.innerWidth / 2 - (width / 2), window.innerHeight / 2 - (height / 2)];
+                const slider = new RxCanvasInterface.Slider(center[0], center[1], width, height / 2);
+
+                slider.SetProperties(sliderPropertiesWrapper);
+                slider.SetSliderOption(sliderProperties);
+                slider.SetChangeCallback(function(value, self){
+                    console.log(value);
+                    console.log(self);
+                });
+                slider.update();
+
+                const sliderSelf = slider.GetSelf();
+                interface.AddComponent(sliderSelf);
+                interface.AddCollision(sliderSelf);
+            }
+
+            window.onload = function(){
+                // RxFramework Load Time
+                setTimeout(init, 100);
+            }
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

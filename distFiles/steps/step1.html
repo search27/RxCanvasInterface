@@ -2,11 +2,18 @@
     <head>
         <script src="../RxFramework.js"></script>
 
-
         <script>
 
-            const init = () => {
+            const buttonStyle = {
+                text : 'Button Sample',
+                lineWidth : 2,
+                textAlign : 'center',
+                textBaseline : 'middle',
+                fontSize : 33,
+                borderRadius : 10
+            }
 
+            const init = () => {
 
                 // target, Create Canvas Count : default 1
                 const interface = new RxCanvasInterface.Interface(document.body, 2);
@@ -18,22 +25,22 @@
                 // Setting Mouse Events
                 interface.SetMouseEvents(mouseEvt);
                 
-                
                 interface.SetGrid([10, 10]);
                 interface.SetGridVisualize(true);
                 interface.SetCollisionVisualize(true);           // default : false
 
-
-                const center = [ window.innerWidth / 2, window.innerHeight / 2];
-                const size = 100;   // width, height
+                const size = 300;   // width, height
+                const center = [ window.innerWidth / 2 - (size / 2), window.innerHeight / 2 - (size / 2)];
                 const button = new RxCanvasInterface.Button(center[0], center[1], size, size);
+                button.SetProperties(buttonStyle);
                 
 
                 button.SetClickCallback((self) => {
                     console.log('clicked');
                     console.log(self);
                 })
-                button.SetPivot(4);
+                // Not Support Yet
+                // button.SetPivot(0);
 
                 const buttonSelf = button.GetSelf();
                 interface.AddComponent(buttonSelf);
