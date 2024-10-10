@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <script src="../RxFramework.js"></script>
+
+        <script>
+
+            const buttonStyle = {
+                text : 'Button Sample',
+                lineWidth : 2,
+                textAlign : 'center',
+                textBaseline : 'middle',
+                fontSize : 33,
+                borderRadius : 10
+            }
+
+            const init = () => {
+
+
+                const isRenderSelf = false; // Default : true
+                // target, Create Canvas Count : default 1
+                interface = new RxCanvasInterface.Interface(document.body, 2, isRenderSelf);
+                const canvas = interface.GetCanvas();
+
+                // Canvas Mover And Zoom
+                canvasMover = new RxCanvasInterface.CanvasMover();
+                canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
+
+
+                // Mouse Events
+                const mouseEvt = new RxCanvasInterface.MouseEvents();
+                
+                // Setting Mouse Events
+                interface.SetMouseEvents(mouseEvt);
+                
+                interface.SetGrid([10, 10]);
+                interface.SetGridVisualize(true);
+                interface.SetCollisionVisualize(true);           // default : false
+
+                const size = 300;   // width, height
+                const center = [ window.innerWidth / 2 - (size / 2), window.innerHeight / 2 - (size / 2)];
+                const button = new RxCanvasInterface.Button(center[0], center[1], size, size);
+                button.SetProperties(buttonStyle);
+                
+
+                button.SetClickCallback((self) => {
+                    console.log('clicked');
+                    console.log(self);
+                })
+                // Not Support Yet
+                // button.SetPivot(0);
+
+                const buttonSelf = button.GetSelf();
+                interface.AddComponent(buttonSelf);
+                interface.AddCollision(buttonSelf);
+
+                anime();
+            }
+
+            const anime = function(){
+                canvasMover.Clear();
+                interface.render();
+                requestAnimationFrame(anime);
+            }
+
+            let interface;
+            let canvasMover;
+
+            window.onload = function(){
+                // RxFramework Load Time
+                setTimeout(init, 100);
+            }
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -12,6 +12,7 @@ RxCanvasInterface
 * Step1.html - Create Button
 * Step2.html - Create SelectBox
 * Step3.html - Create Slider
+* Step4.html - Zoom And Move Sample
 
 ## Sample Code
 
@@ -81,10 +82,16 @@ function BaseDraw(){}
 ## Grid
 * Not Support Yet
 
+## Function And Constructor
+* CreateCanvas - Function( _target, _count, _isResize, interface )
+* Interface - Constructor( wrapper, _count, isRenderSelf )
+* CanvasMover - Constructor()
+* MouseEvents - Constructor()
+
 ## Elements
 * Grid - Not Support Yet
 * Pivot - Not Support Yet
-*
+* 
 ### Button
 
 ```javascript
