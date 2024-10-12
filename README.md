@@ -86,7 +86,18 @@ function BaseDraw(){}
 * CreateCanvas - Function( _target, _count, _isResize, interface )
 * Interface - Constructor( wrapper, _count, isRenderSelf )
 * CanvasMover - Constructor()
+```javascript
+
+// Canvas Mover And Zoom
+canvasMover = new RxCanvasInterface.CanvasMover();
+canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
+canvasMover.SetActive(true);                    // Active Default : true
+
+canvasMover.Clear();                            // canvas Clear
+
+```
 * MouseEvents - Constructor()
+
 
 ## Elements
 * Grid - Not Support Yet
