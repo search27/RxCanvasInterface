@@ -14,41 +14,27 @@ RxCanvasInterface
 * Step3.html - Create Slider
 * Step4.html - Zoom And Move Sample
 
-## Sample Code
 
-```javascript
-// target, Create Canvas Count : default 1
-const interface = new RxCanvasInterface.Interface(document.body, 2);
-const canvas = interface.GetCanvas();
-
-// Mouse Events
-const mouseEvt = new RxCanvasInterface.MouseEvents();
-
-// Setting Mouse Events
-interface.SetMouseEvents(mouseEvt);
-
-
-interface.SetGrid([10, 10]);
-interface.SetGridVisualize(true);
-interface.SetCollisionVisualize(true);           // default : false
-
-
-const center = [ window.innerWidth / 2, window.innerHeight / 2];
-const size = 100;   // width, height
-const button = new RxCanvasInterface.Button(center[0], center[1], size, size);
-button.SetClickCallback((self) => {
-    console.log('clicked');
-    console.log(self);
-})
-
-const buttonSelf = button.GetSelf();
-interface.AddComponent(buttonSelf);
-interface.AddCollision(buttonSelf);
-
-```
 
 ## Interface
 * This is Controller For Each Elements
+
+```javascript
+const isRenderSelf = false; // Default : true
+interface = new RxCanvasInterface.Interface(document.body, isRenderSelf);
+
+// Interface will be Create Two Canvases
+const canvas = interface.GetCanvas();
+
+// Canvas Mover And Zoom
+canvasMover = new RxCanvasInterface.CanvasMover();
+
+// [AddCanvas] Should be ordered.               // Default canvas[0] : For Drawing, canvas[1] : For Collision
+canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
+interface.SetCanvasMover(canvasMover);          // Set For Interface : this calculate Elements Collision
+
+```
+
 
 
 
@@ -64,19 +50,26 @@ console.log(RxCanvasInterface);             // Check Functions
 ```
 ### Common Elements Functions
 ```javascript
-function GetSelf(){}                    // Get Self
-function SetProperties(){}              // Set Properties Base on Default Properties
-function IsCollision(){}                // Check Collision
-function SetClickAction(){}
+    
+function GetSelf(){}                            // Get Element Self
 function SetClickCallback(){}
-function SetPivot(){}                   // Not Support Yet
-function CreatePivots(){}
-function CreateEdge(){}
-function DrawPolygon(){}
-function DrawStroke(){}
-function DrawText(){}
-function BaseUpdate(){}
-function BaseDraw(){}
+
+function SetProperties(){}                      // Use This Function [SetProperties]
+
+function SetPosition(){}
+function SetWidth(){}
+function SetHeight(){}
+function SetDrawTurnOnOff(){}                   // Draw On And Off By Interface
+function SetCollisionTurnOnOff(){}              // Collision Check On And Off By (Interface, Mouse Events, Canvas Mover)
+function SetColor(){}
+function SetText(){}
+function SetClickAction(){}
+function SetPivot(){}
+
+function IsCollision(){}                        // Collision Checker Parmeters : Object { x, y }
+function update(){}
+function draw(){}
+
 ```
 
 ## Grid
@@ -84,7 +77,7 @@ function BaseDraw(){}
 
 ## Function And Constructor
 * CreateCanvas - Function( _target, _count, _isResize, interface )
-* Interface - Constructor( wrapper, _count, isRenderSelf )
+* Interface - Constructor( wrapper, isRenderSelf )
 * CanvasMover - Constructor()
 ```javascript
 
@@ -92,12 +85,42 @@ function BaseDraw(){}
 canvasMover = new RxCanvasInterface.CanvasMover();
 canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
 canvasMover.SetActive(true);                    // Active Default : true
-
 canvasMover.Clear();                            // canvas Clear
 
 ```
-* MouseEvents - Constructor()
+```javascript
 
+// Sample Code
+const isRenderSelf = false; // Default : true
+interface = new RxCanvasInterface.Interface(document.body, isRenderSelf);
+
+// Interface will be Create Two Canvases
+const canvas = interface.GetCanvas();
+
+// Canvas Mover And Zoom
+canvasMover = new RxCanvasInterface.CanvasMover();
+
+// [AddCanvas] Should be ordered.               // Default canvas[0] : For Drawing, canvas[1] : For Collision
+canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
+interface.SetCanvasMover(canvasMover);          // Set For Interface : this calculate Elements Collision
+
+```
+
+
+* MouseEvents - Constructor()
+```javascript
+
+// Sample Code
+const isRenderSelf = false; // Default : true
+interface = new RxCanvasInterface.Interface(document.body, isRenderSelf);
+
+// Mouse Events
+const mouseEvt = new RxCanvasInterface.MouseEvents();
+
+// Setting Mouse Events
+interface.SetMouseEvents(mouseEvt);
+
+```
 
 ## Elements
 * Grid - Not Support Yet

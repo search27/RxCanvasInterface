@@ -18,13 +18,13 @@
 
                 const isRenderSelf = false; // Default : true
                 // target, Create Canvas Count : default 1
-                interface = new RxCanvasInterface.Interface(document.body, 2, isRenderSelf);
+                interface = new RxCanvasInterface.Interface(document.body, isRenderSelf);
                 const canvas = interface.GetCanvas();
 
                 // Canvas Mover And Zoom
                 canvasMover = new RxCanvasInterface.CanvasMover();
                 canvasMover.AddCanvas(canvas, true, true);      // Target Array<Canvas>, Boolean (movement), Boolean (scale)
-
+                interface.SetCanvasMover(canvasMover);
 
                 // Mouse Events
                 const mouseEvt = new RxCanvasInterface.MouseEvents();
