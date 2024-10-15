@@ -72,6 +72,23 @@ function draw(){}
 
 ```
 
+## Layer
+* Layer For Canvases
+* Default canvas[0] : Drawing, canvas[1] : Collision
+
+```javascript
+const isRenderSelf = false; // Default : true
+interface = new RxCanvasInterface.Interface(document.body, isRenderSelf);
+interface.CreateLayer();
+interface.DestroyLayer(index);
+interface.AddLayer(index, component);
+interface.RemoveLayer(index, component);
+interface.GetLayer(index);
+interface.SetLayerName(index, name);
+interface.GetLayerNames();
+```
+
+
 ## Grid
 * Not Support Yet
 
